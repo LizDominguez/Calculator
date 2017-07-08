@@ -58,7 +58,9 @@ p {
   height: 30px;
   width: 10%;
   border: 1px solid #382821;
-  box-shadow: -1px 1px 0px 1px rgba(0,0,0,1);
+  box-shadow: -1px -1px 0px 1px rgba(0,0,0,1);
+  -webkit-box-shadow: -1px -1px 0px 1px rgba(0,0,0,1);
+  -moz-box-shadow: -1px -1px 0px 1px rgba(0,0,0,1);
 }
 
 .container {
