@@ -212,7 +212,7 @@ function createNewOp(){
       //clear newNum array
       
       else{
-        newOpr.push(newNum.join(''), operation[i]);
+        newOpr.push(+newNum.join(''), operation[i]);
         newNum = [];
       }
       
@@ -226,7 +226,7 @@ function createNewOp(){
   }
   
   //store the last number
-  newOpr.push(newNum.join(''));
+  newOpr.push(+newNum.join(''));
   
   return newOpr;
     
@@ -240,7 +240,7 @@ function calculate(){
   for(var i = 1; i < operation.length; i+=2){
     
     if(operation[i] === "+"){
-      result += operation[i+1];
+      result += operation[i+1]; 
 
     }
     
