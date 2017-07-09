@@ -19,7 +19,11 @@ function init(){
   //if enter is pressed, calculate operation
   enter.addEventListener("click", function(){
     calculate();
-    alert(result); 
+    display.textContent = result;
+    result = 0;
+    num = 0;
+    operation = [];
+    
   });
   
 }
@@ -37,14 +41,20 @@ function checkButtons() {
     }
     
     //Clear last entry
-    if (this.textContent === "CE"){
-      operation.pop();
+    if (this.textContent === "C"){
+      display.textContent = operation.pop();
       formula.textContent = operation.join('');
     }
            
     //.
     if (this.textContent === "."){
       display.textContent = num + ".";
+    }
+      
+    //π
+    if (this.textContent === "π"){
+      num = 3.1416;
+      displayNum();
     }
       
     //0
@@ -131,14 +141,14 @@ function checkButtons() {
         
     }
     
-    //%
-    if (this.textContent === "%"){
-      displayOp("%");
-        
+    //+/-
+    if (this.textContent === "+/-"){
+      var inv = operation.pop();
+      num = inv * -1;
+      displayNum();
     }
       
-
-  
+      
   
 });
     
@@ -157,8 +167,7 @@ function ac(){
   result = 0;
   display.textContent = num; 
   operation = [];
-  formula.textContent = " "; 
-  
+  formula.textContent = " ";  
 }
 
 function displayNum(){
@@ -174,27 +183,34 @@ function displayOp(op) {
 }
 
 
+
 function calculate(){
   
   result += operation[0];
   
-  for(var i = 0; i < operation.length; i+=2){
+  for(var i = 1; i < operation.length; i+=2){
     
-    if(operation[i-1] === "+"){
-      result += operation[i];
+    if(operation[i] === "+"){
+      result += operation[i+1];
+
     }
     
-    if(operation[i-1] === "-"){
-      result -= operation[i];
+    if(operation[i] === "-"){
+      result -= operation[i+1];
+
     }
     
-    if(operation[i-1] === "x"){
-      result *= operation[i];
+    if(operation[i] === "x"){
+      result *= operation[i+1];
+
     }
     
-    if(operation[i-1] === "÷"){
-      result /= operation[i];
+    if(operation[i] === "÷"){
+      result /= operation[i+1];
+
     }
+    
+    
        
   }
   
