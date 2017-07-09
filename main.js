@@ -5,6 +5,9 @@ var display = document.querySelector(".screen");
 var formula = document.querySelector(".formula");
 var enter = document.querySelector(".enter");
 var buttons = document.querySelectorAll(".buttons");
+var funcBtns = document.querySelectorAll(".functions .buttons");
+var opBtns = document.querySelectorAll(".operations .buttons");
+var numBtns = document.querySelectorAll(".numbers .buttons");
 var operation = [];
 var result = 0;
 
@@ -18,6 +21,10 @@ function init() {
   
   //if enter is pressed, calculate operation
   enter.addEventListener("click", function() {
+    
+    resetBoxShadow();
+    this.style.boxShadow = "inset 0px 2px 10px 0px rgba(0,0,0,.1)";
+    
     //restructure operations array to allow int > 9
     operation = createNewOp();
     
@@ -37,10 +44,16 @@ function init() {
 
 function checkButtons() {
   "use strict";
+  
   for (var i = 0; i < buttons.length; i++) {
     
     buttons[i].addEventListener("click", function(){
-     
+    
+    //clcik effect
+    resetBoxShadow();
+    this.style.boxShadow = "inset 0px 2px 10px 0px rgba(0,0,0,.1)";
+
+      
     //Turn ON
     if (this.textContent === "ON"){
       ac();
@@ -262,6 +275,27 @@ function calculate(){
        
   }
   
+}
+
+function resetBoxShadow() {
+  
+  //removes button press effect
+
+ for (var i = 0; i < numBtns.length; i++) {
+    numBtns[i].style.boxShadow = "0px 3px 0px 0px #df999e, inset 0px 0px 5px 0px rgba(255,255,255,.4)";
+  }
+  
+  for (var i = 0; i < funcBtns.length; i++) {
+    funcBtns[i].style.boxShadow = "0px 3px 0px 0px #e3e3e3";
+  }
+  
+   for (var i = 0; i < opBtns.length; i++) {
+    opBtns[i].style.boxShadow = "0px 3px 0px 0px #e3e3e3";
+  }
+  
+  document.getElementById("on").style.boxShadow = "0px 3px 0px 0px #6692b3";
+  
+  enter.style.boxShadow = "0px 3px 0px 0px #e3e3e3";
 }
 
 

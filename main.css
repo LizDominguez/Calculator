@@ -180,3 +180,20 @@ a {
   text-decoration: none;
   color: #df999e;
 }
+
+
+@media only screen and (max-width: 500px) {
+  
+  .calculator {
+    height: 440px;
+    width: 330px;  
+  }
+  
+  .screen {
+    width: 300px;
+  }
+  
+  .formula {
+    width: 280px;
+  }
+}
