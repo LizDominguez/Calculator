@@ -1,5 +1,5 @@
 # Calculator
-Javascript calculator
+A Javascript calculator with the functionality of a real calculator
 
 <div align="center">
 <img src="https://github.com/LizDominguez/Calculator/blob/master/screenShot.png" alt="preview">
