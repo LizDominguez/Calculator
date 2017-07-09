@@ -1,5 +1,4 @@
 /*jslint browser: true*/
-/*global $, jQuery*/
 
 var num = 0;
 var display = document.querySelector(".screen");
@@ -11,13 +10,14 @@ var result = 0;
 
 init();
 
-function init(){
+function init() {
+  "use strict";
   
   off(); //calculator is off
   checkButtons(); //probe buttons for input
   
   //if enter is pressed, calculate operation
-  enter.addEventListener("click", function(){
+  enter.addEventListener("click", function() {
     //restructure operations array to allow int > 9
     operation = createNewOp();
     
@@ -36,8 +36,8 @@ function init(){
 
 
 function checkButtons() {
-  
-   for(var i = 0; i < buttons.length; i++){
+  "use strict";
+  for (var i = 0; i < buttons.length; i++) {
     
     buttons[i].addEventListener("click", function(){
      
@@ -55,6 +55,7 @@ function checkButtons() {
     //.
     if (this.textContent === "."){
       display.textContent = num + ".";
+      displayOp(".");
     }
       
     //π
@@ -201,34 +202,40 @@ function createNewOp(){
   
   for(var i = 0; i < operation.length; i++){
     if(isNaN(operation[i])){
+
+      //if it's a decimal point, keep creating new number
+      if(operation[i] === ".") newNum.push(operation[i]);
+      
       //if it's not a number
       //create a number in the newNum array
       //store the number and operand in newOpr 
       //clear newNum array
       
-      newOpr.push(newNum.join(''), operation[i]);
-      newNum = [];
+      else{
+        newOpr.push(newNum.join(''), operation[i]);
+        newNum = [];
+      }
       
-       }
-    else {
-      //if there are consecutive numbers
-      //store them in a new array 
-      
-      newNum.push(operation[i]);
     }
+    
+    //if there are consecutive numbers
+    //store them in a new array 
+    else newNum.push(operation[i]);
+    
+    
   }
   
   //store the last number
   newOpr.push(newNum.join(''));
   
   return newOpr;
-  
-  
+    
 }
+
 
 function calculate(){
   
-  result += operation[0];
+  result = operation[0];
   
   for(var i = 1; i < operation.length; i+=2){
     
@@ -251,8 +258,7 @@ function calculate(){
       result /= operation[i+1];
 
     }
-    
-    
+       
        
   }
   
