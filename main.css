@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Orbitron|Roboto|Pacifico');
+@import url('https://fonts.googleapis.com/css?family=Orbitron|Roboto|Pacifico|Poiret+One');
 
 html, body {
   margin: 0;
@@ -7,7 +7,7 @@ html, body {
 
 body {
   background-color: #fafafa;
-  padding-top: 100px;
+  padding-top: 80px;
   font: 30px 'Roboto';
 }
 
@@ -24,6 +24,7 @@ body {
 }
 
 .screen {
+  color: #212121;
   height: 65px;
   width: 395px;
   margin: 0 auto;
@@ -75,6 +76,10 @@ p {
   -webkit-box-shadow: 0px 3px 0px 0px #df999e, inset 0px 0px 5px 0px rgba(255,255,255,.4));
   -moz-box-shadow: 0px 3px 0px 0px #df999e, inset 0px 0px 5px 0px rgba(255,255,255,.4);
   box-shadow: 0px 3px 0px 0px #df999e, inset 0px 0px 5px 0px rgba(255,255,255,.4);
+}
+
+.buttons:hover {
+  cursor:pointer;
 }
 
 .functions {
@@ -149,9 +154,23 @@ p {
   box-shadow: 0px 3px 0px 0px #e3e3e3;
 }
 
+.enter:hover {
+  cursor:pointer;
+}
+
 span {
   position: relative;
   top: -46px;
 }
 
+p {
+  color: #424242;
+  font: 15px 'Poiret One';
+  text-align: center;
+  margin-top: 90px;
+}
 
+a {
+  text-decoration: none;
+  color: #df999e;
+}
