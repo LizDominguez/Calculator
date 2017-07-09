@@ -18,8 +18,14 @@ function init(){
   
   //if enter is pressed, calculate operation
   enter.addEventListener("click", function(){
+    //restructure operations array to allow int > 9
+    operation = createNewOp();
+    
+    //calculate result
     calculate();
     display.textContent = result;
+    
+    //reset values
     result = 0;
     num = 0;
     operation = [];
@@ -148,7 +154,13 @@ function checkButtons() {
       displayNum();
     }
       
-      
+    //√
+    if (this.textContent === "√"){
+      var sqr = operation.pop();
+      num = Math.sqrt(sqr);
+      displayNum();
+    }
+          
   
 });
     
@@ -156,11 +168,11 @@ function checkButtons() {
   
 }
 
+
 function off(){
   display.textContent = " ";
   formula.textContent = " ";
 }
-
 
 function ac(){
   num = 0;
@@ -182,7 +194,37 @@ function displayOp(op) {
   formula.textContent = operation.join('');
 }
 
-
+function createNewOp(){
+  
+  var newNum = [];
+  var newOpr = [];
+  
+  for(var i = 0; i < operation.length; i++){
+    if(isNaN(operation[i])){
+      //if it's not a number
+      //create a number in the newNum array
+      //store the number and operand in newOpr 
+      //clear newNum array
+      
+      newOpr.push(newNum.join(''), operation[i]);
+      newNum = [];
+      
+       }
+    else {
+      //if there are consecutive numbers
+      //store them in a new array 
+      
+      newNum.push(operation[i]);
+    }
+  }
+  
+  //store the last number
+  newOpr.push(newNum.join(''));
+  
+  return newOpr;
+  
+  
+}
 
 function calculate(){
   

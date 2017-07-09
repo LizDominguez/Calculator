@@ -37,7 +37,9 @@ body {
   -moz-box-shadow: inset 0px 0px 7px 0px rgba(0,0,0,0.75), inset 2px 2px 10px 0px rgba(255,255,255,0.75);
   box-shadow: inset 0px 0px 7px 0px rgba(0,0,0,0.75), inset 2px 2px 10px 0px rgba(255,255,255,0.75);
   text-shadow: 2px 2px #a0b6b5;
+  overflow: hidden;
 }
+
 
 .formula {
   font: 12px 'Roboto';
@@ -46,6 +48,7 @@ body {
   text-align: right;
   width: 380px;
   height: 15px;
+  overflow: hidden;
 }
 
 .brand{
