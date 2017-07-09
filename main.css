@@ -39,15 +39,18 @@ body {
   text-shadow: 2px 2px #a0b6b5;
 }
 
-p {
-  overflow: hidden;
-  position: relative;
-  top: -38px;
-  color: #2a2a2c;
+.formula {
+  font: 12px 'Roboto';
+  color: #888578;
+  margin: -25px 0px 0px 15px;
+  text-align: right;
+  width: 395px;
+  height: 15px;
 }
 
 .brand{
-  margin: 20px 10px 0px 10px;
+  margin: 0px 10px 0px 10px;
+  padding-top: 30px;
   font: 20px 'Pacifico';
   color: #a9a8ad;
 }
@@ -167,7 +170,7 @@ p {
   color: #424242;
   font: 15px 'Poiret One';
   text-align: center;
-  margin-top: 90px;
+  margin-top: 60px;
 }
 
 a {

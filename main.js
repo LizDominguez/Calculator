@@ -3,6 +3,7 @@
 
 var num;
 var display = document.querySelector(".screen");
+var formula = document.querySelector(".formula");
 var enter = document.querySelector(".enter");
 var buttons = document.querySelectorAll(".buttons");
 var operation = [];
@@ -29,9 +30,10 @@ function checkButtons() {
       ac();
     }
     
-    //All clear
-    if (this.textContent === "AC"){
-      ac();
+    //Clear last entry
+    if (this.textContent === "CE"){
+      operation.pop();
+      formula.textContent = operation.toString();
     }
            
     //.
@@ -101,9 +103,34 @@ function checkButtons() {
       
     //+
     if (this.textContent === "+"){
-      operation.push("+");
+      displayOp("+");
         
     }
+      
+    //-
+    if (this.textContent === "-"){
+      displayOp("-");
+        
+    }
+      
+    //x
+    if (this.textContent === "x"){
+      displayOp("x");
+        
+    }
+      
+    //÷
+    if (this.textContent === "÷"){
+      displayOp("÷");
+        
+    }
+    
+    //%
+    if (this.textContent === "%"){
+      displayOp("%");
+        
+    }
+      
 
   
   
@@ -113,13 +140,13 @@ function checkButtons() {
   
   enter.addEventListener("click", function(){
     alert(operation);
- 
   });
   
 }
 
 function off(){
   display.textContent = " ";
+  formula.textContent = " ";
 }
 
 
@@ -127,18 +154,22 @@ function ac(){
   num = 0;
   display.textContent = num; 
   operation = [];
+  formula.textContent = " "; 
   
 }
 
 function displayNum(){
   display.textContent = num;
   operation.push(num);
+  formula.textContent = operation.toString(); 
 }
 
-
-function add(){
-  
+function displayOp(op) {
+  display.textContent = op;
+  operation.push(op);
+  formula.textContent = operation.toString();
 }
+
 
 
 
