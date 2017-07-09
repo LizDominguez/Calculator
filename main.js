@@ -5,7 +5,8 @@ var num;
 var display = document.querySelector(".screen");
 var enter = document.querySelector(".enter");
 var buttons = document.querySelectorAll(".buttons");
-var resultStr = "";
+var operation = [];
+var result = 0;
 
 init();
 
@@ -32,10 +33,16 @@ function checkButtons() {
     if (this.textContent === "AC"){
       ac();
     }
+           
+    //.
+    if (this.textContent === "."){
+      display.textContent = num + ".";
+    }
       
     //0
     if (this.textContent === "0"){
-      ac();
+      num = 0;
+      displayNum();
     }
       
     //1
@@ -91,12 +98,23 @@ function checkButtons() {
       num = 9;
       displayNum();
     }
+      
+    //+
+    if (this.textContent === "+"){
+      operation.push("+");
+        
+    }
 
   
   
 });
     
   }
+  
+  enter.addEventListener("click", function(){
+    alert(operation);
+ 
+  });
   
 }
 
@@ -107,17 +125,23 @@ function off(){
 
 function ac(){
   num = 0;
-  display.textContent = num;
+  display.textContent = num; 
+  operation = [];
+  
 }
 
 function displayNum(){
   display.textContent = num;
+  operation.push(num);
 }
 
 
-function numbers(num){
-  var numbers = [];
-  numbers.push(num);
+function add(){
   
-  return numbers;
 }
+
+
+
+
+
+
