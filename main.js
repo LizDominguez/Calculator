@@ -1,7 +1,7 @@
 /*jslint browser: true*/
 /*global $, jQuery*/
 
-var num;
+var num = 0;
 var display = document.querySelector(".screen");
 var formula = document.querySelector(".formula");
 var enter = document.querySelector(".enter");
@@ -15,6 +15,12 @@ function init(){
   
   off(); //calculator is off
   checkButtons(); //probe buttons for input
+  
+  //if enter is pressed, calculate operation
+  enter.addEventListener("click", function(){
+    calculate();
+    alert(result); 
+  });
   
 }
 
@@ -33,7 +39,7 @@ function checkButtons() {
     //Clear last entry
     if (this.textContent === "CE"){
       operation.pop();
-      formula.textContent = operation.toString();
+      formula.textContent = operation.join('');
     }
            
     //.
@@ -138,10 +144,6 @@ function checkButtons() {
     
   }
   
-  enter.addEventListener("click", function(){
-    alert(operation);
-  });
-  
 }
 
 function off(){
@@ -152,6 +154,7 @@ function off(){
 
 function ac(){
   num = 0;
+  result = 0;
   display.textContent = num; 
   operation = [];
   formula.textContent = " "; 
@@ -161,15 +164,41 @@ function ac(){
 function displayNum(){
   display.textContent = num;
   operation.push(num);
-  formula.textContent = operation.toString(); 
+  formula.textContent = operation.join(''); 
 }
 
 function displayOp(op) {
   display.textContent = op;
   operation.push(op);
-  formula.textContent = operation.toString();
+  formula.textContent = operation.join('');
 }
 
+
+function calculate(){
+  
+  result += operation[0];
+  
+  for(var i = 0; i < operation.length; i+=2){
+    
+    if(operation[i-1] === "+"){
+      result += operation[i];
+    }
+    
+    if(operation[i-1] === "-"){
+      result -= operation[i];
+    }
+    
+    if(operation[i-1] === "x"){
+      result *= operation[i];
+    }
+    
+    if(operation[i-1] === "÷"){
+      result /= operation[i];
+    }
+       
+  }
+  
+}
 
 
 
