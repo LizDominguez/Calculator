@@ -12,3 +12,5 @@ Features:
 * Works with decimals and multi-digit numbers
 * CSS button click effects
 * Responsive 
+
+<a href="https://codepen.io/LizDominguez/pen/zzmVqj">Open in Codepen</a>
